@@ -3,13 +3,13 @@ package StackQueue;
 import java.util.ArrayList;
 
 //Implementing stack using array
-class StackByArray {
+class Implementation {
 
     int arr[];
     int top;
     int currSize;
 
-    StackByArray(int size) {
+    Implementation(int size) {
         arr = new int[size];
         top = -1;
         currSize = size;
@@ -229,8 +229,6 @@ class StackByArray {
             System.out.println();
         }
     }
-
-
     
 //Implementing Queue usin LL
 
@@ -349,7 +347,7 @@ public class QueueUsingLL {
     }
     
     public static void main(String[] args) {
-        StackByArray st = new StackByArray(4);
+        Implementation st = new Implementation(4);
         // st.push(1);
         // st.push(2);
         // st.push(3);

@@ -1,13 +1,13 @@
 //implementing circul Queue
 package StackQueue;
 
-public class StackImplement {
+public class CircularQueue {
      int[] arr;
      int top;
      int size;
      int count; // number of elements in stack
 
-     StackImplement(int size) {
+     CircularQueue(int size) {
         this.size = size;
         arr = new int[size];
         top = -1;
@@ -71,7 +71,7 @@ public class StackImplement {
     }
 
     public static void main(String[] args) {
-        StackImplement st = new StackImplement(4);
+        CircularQueue st = new CircularQueue(4);
 
         st.push(10);
         st.push(20);
