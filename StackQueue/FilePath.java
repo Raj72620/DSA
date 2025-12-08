@@ -2,7 +2,7 @@ package StackQueue;
 
 import java.util.Stack;
 
-public class stack {
+public class FilePath {
 
     public static String File(String str){
         Stack<String> st = new Stack<>();

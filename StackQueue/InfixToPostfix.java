@@ -43,7 +43,7 @@ class InfixToPostfix {
                 }
                 st.pop();
             } else {
-                while (!st.isEmpty() && precidence(st.peek()) >= (precidence(ch))) {
+                while (!st.isEmpty() && precidence(st.peek()) > (precidence(ch))) {
                     result += st.pop();
                 }
                 st.push(ch);
@@ -56,8 +56,73 @@ class InfixToPostfix {
 
     }
 
+
+    // handling all edge cases and using string builder 
+
+    class Solution {
+    public static String infixToPostfix(String s) {
+        StringBuilder result = new StringBuilder();
+        Stack<Character> st = new Stack<>();
+        
+        for (int i = 0; i < s.length(); i++) {
+            char ch = s.charAt(i);
+            
+            if (Character.isLetterOrDigit(ch)) {
+                result.append(ch);
+            } else if (ch == '(') {
+                st.push(ch);
+            } else if (ch == ')') {
+                while (!st.isEmpty() && st.peek() != '(') {
+                    result.append(st.pop());
+                }
+                st.pop(); 
+            } else { 
+                //  '^' specially as it's right-associative
+                if (ch == '^') {
+                    // For right-associative '^', only pop operators with higher precedence
+                    while (!st.isEmpty() && precedence(st.peek()) > precedence(ch)) {
+                        result.append(st.pop());
+                    }
+                } else {
+                    // For left-associative operators (+, -, *, /)
+                    // Pop operators with higher OR equal precedence
+                    while (!st.isEmpty() && precedence(st.peek()) >= precedence(ch)) {
+                        if (st.peek() == '(') break;
+                        result.append(st.pop());
+                    }
+                }
+                st.push(ch);
+            }
+        }
+        
+        // Pop remaining operators
+        while (!st.isEmpty()) {
+            result.append(st.pop());
+        }
+        
+        return result.toString();
+    }
+    
+    static int precedence(char ch) {
+        switch (ch) {
+            case '+':
+            case '-':
+                return 1;
+            case '*':
+            case '/':
+                return 2;
+            case '^':
+                return 3;
+            default:
+                return -1;
+        }
+    }
+}
+
+
+
     public static void main(String[] args) {
-        String Infix = "+a*b";
+        String Infix = "h^m^q^(7-4)";
         String str = conversion(Infix);
         System.out.println(str + " ");
     }
