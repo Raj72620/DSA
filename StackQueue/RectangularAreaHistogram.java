@@ -3,7 +3,7 @@ package StackQueue;
 import java.util.Stack;
 
 
-public class ReactangularAreaHistogram{
+public class RectangularAreaHistogram{
     public static int[] NSL(int[] arr){
 
         Stack<Integer> st = new Stack<>();

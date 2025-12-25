@@ -4,40 +4,37 @@ import java.util.Stack;
 
 public class stack {
 
-    public static String File(String str){
-        Stack<String> st = new Stack<>();
-       int n=str.length();
-       int i=0;
-       while(i<n){
-        while(i<n && str.charAt(i)=='/'){
-            i++;
-        }
-        if(i==n) break;
+  public static void collision(int[] arr){
+    Stack<Integer> st = new Stack<>();
 
-        int start=i;
-        while(i<n && str.charAt(i)!='/') i++;
+    for (int i = 0; i < arr.length; i++) {
 
-            String s = str.substring(start,i);
-            if(!st.isEmpty() && s.equals("..")){
+        if (arr[i] < 0) {
+            int store = Math.abs(arr[i]);
+
+            while (!st.isEmpty() && store > st.peek()) {
                 st.pop();
             }
-            else if(!s.equals(".")){
-                st.push(s);
+
+            if (!st.isEmpty() && store == st.peek()) {
+                st.pop(); // both destroyed
+            }
+            else if (st.isEmpty()) {
+                st.push(arr[i]); // negative survives
             }
         }
-        if(st.isEmpty()) return "/";
-
-        StringBuilder res = new StringBuilder();
-        for(String d :st){
-            res.append("/").append(d);
+        else {
+            st.push(arr[i]);
         }
-        
-         return res.toString();
-       }
-       
+    }
+
+    while(!st.isEmpty()){
+      System.out.print(st.pop()+ " ");
+    }
+  }
     public static void main(String[] args) {
-     String str = "a/b/..";
-     System.out.println(File(str));
-      
+     int[] arr = {4,7,1,2,-3,-7,-7};
+     collision(arr);
+
     }
 }

@@ -10,7 +10,6 @@ public class NextGreaterElement {
     //loop starts form end onwards 
     public static void findNGE(int[] arr , int[] NGE){
         Stack<Integer> st = new Stack<>();
-
         for(int i=arr.length-1;i>=0;i--){
             while(!st.isEmpty() && arr[i]>=st.peek()){
                 st.pop();
