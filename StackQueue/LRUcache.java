@@ -16,11 +16,11 @@ class LRUcache {
         }
     }
     Map<Integer, Node> map;
-    int capacity;
+    int cap;
     Node head, tail;
     
-        LRUcache(int capacity) {
-        this.capacity = capacity;
+        LRUcache(int cap) {
+        this.cap = cap;
         this.map = new HashMap<>();
         
         head = new Node(-1, -1);
@@ -73,7 +73,7 @@ class LRUcache {
             map.put(key, newNode);
             addNode(newNode);
             
-            if (map.size() > capacity) {
+            if (map.size() > cap) {
                 Node lru = popTail();
                 map.remove(lru.key);
             }

@@ -14,7 +14,6 @@ public class DLL {
             this.prev = null;
         }
     }
-
     static class DoubleLL {
 
         Node head;
