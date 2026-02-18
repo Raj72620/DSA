@@ -1,47 +1,20 @@
-
 public class practice {
-    public static int findSum(int[] arr) {
-        int n = arr.length;
-        
-        int i = 1, sum = 1; 
-        
-        while (i < n) {
-            // Case 1: Equal rating (plateau)
-            if (arr[i] == arr[i - 1]) {
-                sum += 1; 
-                i++;
-            }
-            
-            // Case 2: Increasing sequence
-            int peak = 1; 
-            
-            while (i < n && arr[i] > arr[i - 1]) {
-                peak++; 
-                sum += peak; 
-                i++;
-            }
-            
-            // If we reached the end during increasing sequence, we're done
-            if (i >= n) break;
-            
-            // Case 3: Decreasing sequence
-            int down = 1; 
-            
-            while (i < n && arr[i] < arr[i - 1]) {
-                sum += down; 
-                i++;
-                down++; 
-            }
-            if (down > peak) {
-                sum += (down - peak);
-            }
+    public static void printPerm(String str, String result){
+        if(str.length()==0){
+            System.out.println(result);
+            return;
         }
-        
-        return sum;
+        for(int i=0;i<str.length();i++){
+            char curr = str.charAt(i);
+
+            String newStr = str.substring(0,i) + str.substring(i+1);
+            printPerm(newStr, result+curr);
+        }
     }
-    public static void main(String[] args) {
-        int[] arr={1,2,87,87,87,2,1};
-     System.out.println(   findSum(arr));
-    }
-    
+public static void main(String[] args) {
+    String str ="abc";
+  
+printPerm(str , "");
+
+}
 }
