@@ -1,6 +1,6 @@
 package BinaryTrees;
 
-public class TreePreOrder {
+class test {
     static class Node{
         int data;
         Node left;
@@ -28,7 +28,13 @@ public class TreePreOrder {
     public static void main(String[] args) {
             int nodes[]={1,2,4,-1,-1,5,-1,-1,3,-1,6,-1,-1};
             BT tree = new BT();
-            Node root = tree.buildTree(nodes);
-            System.out.println(root.data);
+          Node root = tree.buildTree(nodes);
+
+          while(root!=null){
+            System.out.print(root.data + " ");
+            root=root.left;
+          }
+          System.out.println("null");
+          
     }
 }
