@@ -1,20 +1,21 @@
+
+import java.util.ArrayList;
+
 public class practice {
-    public static void printPerm(String str, String result){
-        if(str.length()==0){
-            System.out.println(result);
-            return;
-        }
-        for(int i=0;i<str.length();i++){
-            char curr = str.charAt(i);
-
-            String newStr = str.substring(0,i) + str.substring(i+1);
-            printPerm(newStr, result+curr);
-        }
-    }
 public static void main(String[] args) {
-    String str ="abc";
-  
-printPerm(str , "");
+    ArrayList<Integer> path = new ArrayList<>();
 
+    path.add(1);
+    path.add(2);
+    path.add(3);
+
+  
+
+    path.remove(path.size()-1);
+
+      for(int i=0;i<path.size();i++){
+        System.out.print(path.get(i)+ " ");
+    }
+  
 }
 }

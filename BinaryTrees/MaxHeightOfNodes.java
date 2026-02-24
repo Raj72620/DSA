@@ -2,6 +2,7 @@ package BinaryTrees;
 
 public class MaxHeightOfNodes {
 
+    // calculating height of a tree -> the max distance b\w root and leaf node.
     static class Node{
         int data ;
         Node left , right;

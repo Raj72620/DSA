@@ -1,40 +1,51 @@
 package BinaryTrees;
 
-class test {
-    static class Node{
+public class test{
+
+   static class Node{
         int data;
         Node left;
         Node right;
 
-         Node(int data) {
-            this.data=data;
-            this.left = null;
-            this.right = null;
+        Node(int data){
+            this.data = data;
+            this.left=null;
+            this.right=null;
         }
     }
-   public static class BT{
-        static int idx=-1;
-        public static Node buildTree(int nodes[]){
-            idx++;
-            if(nodes[idx]==-1){
-                return null;
-            }
-            Node newNode = new Node(nodes[idx]);
-            newNode.left=buildTree(nodes);
-            newNode.right=buildTree(nodes);
-            return newNode;
-        }
-    }
-    public static void main(String[] args) {
-            int nodes[]={1,2,4,-1,-1,5,-1,-1,3,-1,6,-1,-1};
-            BT tree = new BT();
-          Node root = tree.buildTree(nodes);
 
-          while(root!=null){
-            System.out.print(root.data + " ");
-            root=root.left;
-          }
-          System.out.println("null");
-          
+static class Findingpath {
+    int globalMax = Integer.MIN_VALUE;
+    
+    public  int maxPathSum(Node root) {
+        findMaxPath(root);
+        return globalMax;
+    }
+    
+    public int findMaxPath(Node root) {
+        if (root == null) return 0;
+        
+        int leftMax = Math.max(0, findMaxPath(root.left));
+        int rightMax = Math.max(0, findMaxPath(root.right));
+        
+        // Update global max with path through current root
+        globalMax = Math.max(globalMax, root.data + leftMax + rightMax);
+        
+        // Return max path that can be extended to parent
+        return root.data + Math.max(leftMax, rightMax);
+    }
+}
+
+   
+    public static void main(String[] args) {
+        Node root = new Node(1);
+        root.left=new Node(2);
+        root.right= new Node(3);
+        root.left.left=new Node(4);
+        root.left.right=new Node(5);
+        root.right.right=new Node(6);
+
+        Findingpath ans = new Findingpath();
+       System.out.println(ans.maxPathSum(root));
     }
 }
