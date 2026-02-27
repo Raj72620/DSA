@@ -1,5 +1,6 @@
 package BinaryTrees;
 
+
 public class test{
 
    static class Node{
@@ -14,38 +15,27 @@ public class test{
         }
     }
 
-static class Findingpath {
-    int globalMax = Integer.MIN_VALUE;
-    
-    public  int maxPathSum(Node root) {
-        findMaxPath(root);
-        return globalMax;
-    }
-    
-    public int findMaxPath(Node root) {
-        if (root == null) return 0;
-        
-        int leftMax = Math.max(0, findMaxPath(root.left));
-        int rightMax = Math.max(0, findMaxPath(root.right));
-        
-        // Update global max with path through current root
-        globalMax = Math.max(globalMax, root.data + leftMax + rightMax);
-        
-        // Return max path that can be extended to parent
-        return root.data + Math.max(leftMax, rightMax);
-    }
+public static int diameter(Node root){
+    if(root==null) return 0;
+
+    int leftDia = diameter(root.left);
+
+    int rightDia= diameter(root.right);
+
+    return Math.max((leftDia+rightDia),Math.max(leftDia,leftDia)+1);
+
 }
 
-   
     public static void main(String[] args) {
-        Node root = new Node(1);
-        root.left=new Node(2);
-        root.right= new Node(3);
-        root.left.left=new Node(4);
-        root.left.right=new Node(5);
-        root.right.right=new Node(6);
 
-        Findingpath ans = new Findingpath();
-       System.out.println(ans.maxPathSum(root));
+           Node root = new Node(1);
+        root.left = new Node(2);
+        root.right = new Node(3);
+        root.left.left = new Node(4);
+        root.left.right = new Node(5);
+        root.right.right = new Node(6);
+
+        System.out.println(diameter(root));
+    
     }
 }

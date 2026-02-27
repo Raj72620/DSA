@@ -68,6 +68,21 @@ public class TreeDiameter{
     }
 
     
+    //optimized easy solution without any custom class
+    static class BT{
+        static int maxi = Integer.MIN_VALUE;
+    public static int optimizedDia(Node root ){
+        if(root==null) return 0;
+
+        int leftDia=optimizedDia(root.left);
+        int rightDia=optimizedDia(root.right);
+
+        maxi=Math.max(maxi, leftDia+rightDia);
+
+        return Math.max(leftDia,rightDia)+1;
+
+    }
+    }
     public static void main(String[] args) {
         Node root = new Node(1);
         root.left=new Node(2);
@@ -76,8 +91,11 @@ public class TreeDiameter{
         root.left.right=new Node(5);
         root.right.right=new Node(6);
 
-        System.out.println(OptimizedDiameter(root).dia);
-         System.out.println(OptimizedDiameter(root).hg);
+        // System.out.println(OptimizedDiameter(root).dia);
+        //  System.out.println(OptimizedDiameter(root).hg);
+
+        BT.optimizedDia(root);   
+        System.out.println(BT.maxi);  // print the diameter
         
     }
 }

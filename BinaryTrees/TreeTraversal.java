@@ -58,9 +58,25 @@ static void IterativePreOrder(Node root){
 
         System.out.print(root.data + " ");
 
-        InOrder(root.right);
-        
+        InOrder(root.right);  
     }
+
+ //Iterative In order tree traversal (Using stack)
+    public static void IterativeInOrder(Node root){
+        Stack<Node> st = new Stack<>();
+        Node curr = root;
+        while(curr!=null || !st.isEmpty()){
+            if(curr!=null){
+                st.push(curr);
+                curr = curr.left;
+            }else{    
+               curr = st.pop();
+                System.out.print(curr.data+ " ");
+                curr = curr.right;
+            }
+        }
+    }
+
 //Post-order tree traversal
         public static void PostOrder(Node root){
 
@@ -73,10 +89,33 @@ static void IterativePreOrder(Node root){
           System.out.print(root.data + " ");
         
     }
+//Iterative Post order tree traversal (Using stack)
 
-    //Level Order traversal   -> (BFS)
+public static void IterativePostOrder(Node root) {
+    Stack<Node> st = new Stack<>();
+    Node curr = root;
+    Node lastVisited = null;
 
-    
+    while (curr != null || !st.isEmpty()) {
+
+        if (curr != null) {
+            st.push(curr);
+            curr = curr.left;
+        } 
+        else {
+            Node peekNode = st.peek();
+
+            if (peekNode.right != null && lastVisited != peekNode.right) {
+                curr = peekNode.right;
+            } 
+            else {
+                System.out.print(peekNode.data + " ");
+                lastVisited = st.pop();
+            }
+        }
+    }
+}
+    //Level Order traversal   -> (BFS) 
   public static void LevelOrder(Node root){
     if(root == null) return;
 
@@ -115,9 +154,12 @@ static void IterativePreOrder(Node root){
         root.right.right=new Node(6);
 
         // preOrder(root);
-         InOrder(root);
+        // InOrder(root);
         // PostOrder(root);
-        // LevelOrder(root);
+        // LevelOrder(root); 
         // IterativePreOrder(root);
+        IterativeInOrder(root);
+        //IterativePostOrder(root);
+
     }
 }
