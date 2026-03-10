@@ -1,7 +1,7 @@
 package Greedy;
 import java.util.*;
 
-public class JobSequencing {
+    class JobSequencing {
 
     int deadline;
     int id ;

@@ -54,7 +54,7 @@ public class TopView {
         System.out.println();
     }
 
-    // Method 2: Using two queues (your iterative approach - corrected)
+    // Method 2: Using two queues (iterative approach )
 
     public static void topViewIteration(Node root) {
         if (root == null) {

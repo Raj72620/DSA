@@ -1,7 +1,7 @@
 package BinaryTrees;
 import java.util.*;
 
-public class test {
+public class burnBinaryTree{
 
     static class Node {
 
@@ -40,6 +40,7 @@ public class test {
         }
         return targetNode;
     }
+//main logic to burn 
 
     public static int burnBinaryTree(Node root,int target){
         Map<Node,Node> parentMap =new HashMap<>();

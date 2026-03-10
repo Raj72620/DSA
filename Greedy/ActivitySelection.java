@@ -4,18 +4,18 @@ import java.util.*;
 
 public class ActivitySelection {
 
-    // for sorted end values 
+    // for sorted finsih values 
 
-    public static void sortedActivity(int[] start , int[] end){
+    public static void sortedActivity(int[] start , int[] finsih){
                 ArrayList<Integer> ans = new ArrayList<>();
-        int lastEnd = end[0];
+        int lastfinsih = finsih[0];
         ans.add(0);
        int max=1;
-        for(int i=1;i<end.length;i++){
-            if(lastEnd<=start[i]){
+        for(int i=1;i<finsih.length;i++){
+            if(lastfinsih<=start[i]){
                 ans.add(i);
                 max++;
-                lastEnd=end[i];
+                lastfinsih=finsih[i];
             }
         }
         System.out.println("The max activity can be performed is :" + max);
@@ -24,15 +24,15 @@ public class ActivitySelection {
         }
     }
 
-    // for unsorted end values -> sort the array using lamda function -> sort by end times 
-    // create a 2D matrix whihc stores idx , start values and sorted end values 
+    // for unsorted finsih values -> sort the array using lamda function -> sort by finsih times 
+    // create a 2D matrix whihc stores idx , start values and sorted finsih values 
 
-    public static void unsortedActivity(int[] start , int[] end){
+    public static void unsortedActivity(int[] start , int[] finsih){
         int[][] activity = new int[start.length][3];
         for(int i=0;i<start.length;i++){
             activity[i][0]=i;
             activity[i][1]=start[i];
-            activity[i][2]=end[i];
+            activity[i][2]=finsih[i];
         }
         Arrays.sort(activity , (a,b)-> a[2]-b[2]);
         int max =0;
@@ -41,13 +41,13 @@ public class ActivitySelection {
          max=1;
          result.add(activity[0][0]);
 
-         int lastEnd=activity[0][2];
+         int lastfinsih=activity[0][2];
 
-         for(int i=1;i<end.length;i++){
-            if(lastEnd <= activity[i][1]){
+         for(int i=1;i<finsih.length;i++){
+            if(lastfinsih <= activity[i][1]){
             result.add(activity[i][0]);
             max++;
-            lastEnd=activity[i][2];
+            lastfinsih=activity[i][2];
          }
         }
         System.out.println(max);
@@ -59,7 +59,7 @@ public class ActivitySelection {
     
     public static void main(String[] args) {
         int[] start={1,2,3};
-        int[] end={4,3,6};
-        unsortedActivity(start, end);
+        int[] finsih={4,3,6};
+        unsortedActivity(start, finsih);
 }
 }
