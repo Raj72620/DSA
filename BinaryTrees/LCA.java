@@ -75,7 +75,7 @@ public class LCA {
         root.left.right=new Node(5);
         root.right.right=new Node(6);
 
-        System.out.println(lcaProblem(root, 4, 5).data);
+        System.out.println(lcaProblem(root, 4, 2).data);
     }
     
 }

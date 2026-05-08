@@ -3,7 +3,7 @@ package BinaryTrees;
 import java.util.*;
 
 
-public class FindoutDistanceK{
+public class findoutDistanceK{
 
    static class Node{
         int data;

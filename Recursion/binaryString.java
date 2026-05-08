@@ -8,12 +8,12 @@ public class binaryString {
             return;
         }
         nonConsecutive(n-1, 0, str+"0");
-        if(lastPlaced==0){
+      
             nonConsecutive(n-1, 1, str+"1");
-        }
+        
     }
     public static void main(String[] args) {
-        int n=3;
+        int n=2;
         nonConsecutive(n , 0 , "");
     }
     

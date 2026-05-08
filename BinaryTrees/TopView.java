@@ -1,7 +1,7 @@
 package BinaryTrees;
 import java.util.*;
 
-public class TopView {
+public class topView {
     
     static class Node {
         int data;

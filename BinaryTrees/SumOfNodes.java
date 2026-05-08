@@ -1,6 +1,6 @@
 package BinaryTrees;
 
-public class SumOfNodes{
+public class sumOfNodes{
 
     static class Node{
         int data ;

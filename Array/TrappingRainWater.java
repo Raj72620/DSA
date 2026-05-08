@@ -1,4 +1,4 @@
-package ArrayConcept;
+package Array;
 
 import java.util.Arrays;
 
@@ -6,34 +6,35 @@ public class TrappingRainWater {
 
     public static int[] FindingMax(int[] arr){
 
-        int[] ML = new int[arr.length];
+        int[] leftArr = new int[arr.length];
 
-        ML[0]=arr[0];                          //for claculation it is n no.of elements hence Time com = O(n)
+        leftArr[0]=arr[0];                          //for claculation it is n no.of elements hence Time com = O(n)
 
         for(int i=1;i<arr.length;i++){    // Space com = O(n)
-            if(arr[i]>=ML[i-1]){
-                ML[i]=arr[i];
+            if(arr[i]>=leftArr[i-1]){
+                leftArr[i]=arr[i];
             }else{
-                ML[i]=ML[i-1];
+                leftArr[i]=leftArr[i-1];
             }
         }
-        int[] MR=new int[arr.length];            //for claculation it is n no.of elements hence Time com = O(n)
+        int[] rightArr=new int[arr.length];            //for claculation it is n no.of elements hence Time com = O(n)
 
-        MR[arr.length-1]=arr[arr.length-1];
+        rightArr[arr.length-1]=arr[arr.length-1];
         for(int i=arr.length-2;i>=0;i--){    // space com = O(n)
-            if(arr[i]>=MR[i+1]){
-                MR[i]=arr[i];
+            if(arr[i]>=rightArr[i+1]){
+                rightArr[i]=arr[i];
             }else{
-                MR[i]=MR[i+1];
+                rightArr[i]=rightArr[i+1];
             }
         }
-       return totalArea(arr, ML, MR);
+       return totalArea(arr, leftArr, rightArr);
     }
-    public static int[] totalArea(int[] arr,int[] ML , int[] MR){
+    
+    public static int[] totalArea(int[] arr,int[] leftArr , int[] rightArr){
         int[] ans = new int[arr.length];            //for claculation it is n no.of elements hence Time com = O(n)
 
         for(int i=0;i<arr.length;i++){           // stroring the answer ima using space com = O(n)
-            int min = Math.min(ML[i], MR[i]);     
+            int min = Math.min(leftArr[i], rightArr[i]);     
 
             int area = min-arr[i];
             ans[i]=area;

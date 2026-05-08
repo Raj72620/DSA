@@ -1,26 +1,24 @@
 
-import java.util.*;
+import java.util.HashMap;
 
-public class practice {
 
-    public int[] twoSum(int[] nums, int target) {
+public  class practice{
 
-        HashMap<Integer, Integer> map = new HashMap<>();
-
-        for (int i = 0; i < nums.length; i++) {
-
-            int complement = target - nums[i];
-
-            if (map.containsKey(complement)) {
-                return new int[]{map.get(complement), i};
-            }
-
-            map.put(nums[i], i);
-        }
-        return new int[]{-1, -1};
+  public static boolean isIso(String s1,String s2){
+    HashMap<Character,Integer> map=new HashMap<>();
+    
+    for(int i=0;i<s1.length();i++){
+      if(map.put(s1.charAt(i), 1)!= map.put(s2.charAt(i),1)){
+          return false;
+      }
     }
-
+    return true;
+  }
+  
     public static void main(String[] args) {
+    String s1= "egg";
+    String s2="add";
 
+    System.out.println(isIso(s1,s2));
     }
 }

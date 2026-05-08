@@ -46,6 +46,7 @@ public class TreeDiameter {
     }
 
     //Optimized -> creating a custom class which stores my diameter value and height value (Bundle)
+    //diameter is being calculated in NODES, not edges
     static class Info {
 
         int dia;
@@ -66,14 +67,19 @@ public class TreeDiameter {
         Info leftDia = OptimizedDiameter(root.left);
         Info rightDia = OptimizedDiameter(root.right);
 
-        int Totaldia = Math.max(Math.max(leftDia.dia, rightDia.dia), leftDia.hg + rightDia.hg) + 1;
+        int throughRoot = leftDia.hg + rightDia.hg + 1;
 
-        int height = Math.max(leftDia.hg, rightDia.hg) + 1;
+        int Totaldia = Math.max(
+                Math.max(leftDia.dia, rightDia.dia),
+                throughRoot
+        );
+        int height = Math.max(leftDia.hg, rightDia.hg)+1;
 
         return new Info(Totaldia, height);
     }
 
     //optimized easy solution without any custom class
+    //diameter is being calculated in edges, not Nodes
     static class BT {
 
         static int maxi = Integer.MIN_VALUE;
@@ -98,12 +104,16 @@ public class TreeDiameter {
         root.right = new Node(3);
         root.left.left = new Node(4);
         root.left.right = new Node(5);
-        root.right.right = new Node(6);
+        root.left.left.left = new Node(6);
+        root.left.right.right = new Node(7);
+        root.left.left.left.left = new Node(8);
+        root.left.right.right.right = new Node(9);
 
         // System.out.println(OptimizedDiameter(root).dia);
         //  System.out.println(OptimizedDiameter(root).hg);
-        BT.optimizedDia(root);
-        System.out.println(BT.maxi);  // print the diameter
+        // BT.optimizedDia(root);
+        // System.out.println(BT.maxi);  // print the diameter
+        System.out.println(TreeOptimizedDiameter(root));
 
     }
 }

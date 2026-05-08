@@ -1,79 +1,66 @@
 package BinaryTrees;
 
-import java.util.LinkedList;
-import java.util.Queue;
+import java.util.*;
 
 public class maxWidthOfBinaryTree{
 
-   static class Node{
+    static class Node {
         int data;
         Node left;
         Node right;
 
-        Node(int data){
+        Node(int data) {
             this.data = data;
-            this.left=null;
-            this.right=null;
+            this.left = null;
+            this.right = null;
         }
     }
 
-    static class Info{
-        Node root;
-        int idx;
+ public static class Info{
+    Node root;
+    int idx;
 
-        public Info(Node root , int idx) {
+         Info(Node root,int idx) {
             this.root=root;
             this.idx=idx;
         }
-    }
+ }
+ public static Info maxWidth(Node root){
+    if(root==null) return new Info(null, 0);
+    Deque<Info> dq = new LinkedList<>();
+    int width =0;
+    dq.add(new Info(root, 0));
 
-    public static int widthOfBinaryTree(Node root) {
+    while(!dq.isEmpty()){
+        int len = dq.size();
 
-        if (root == null) return 0;
+        int firstIdx = dq.getFirst().idx;
+        int lastIdx = dq.getLast().idx;
 
-        Queue<Info> q = new LinkedList<>();
-        q.add(new Info(root, 0));
+         width = Math.max(width, lastIdx-firstIdx+1);
 
-        int ans = 0;
+        for(int i=0;i<len;i++){
+            Info curr = dq.removeFirst();
 
-        while (!q.isEmpty()) {
-            int size = q.size();
-            int min = q.peek().idx;
-            int first = 0, last = 0;
-
-            for (int i = 0; i < size; i++) {
-                Info currInfo = q.poll();
-                int curr = currInfo.idx - min;
-                Node currentRoot = currInfo.root;
-
-                if (i == 0) first = curr;
-                if (i == size - 1) last = curr;
-
-                if (currentRoot.left != null) {
-                    q.add(new Info(currentRoot.left, curr * 2 + 1));
-                }
-
-                if (currentRoot.right != null) {
-                    q.add(new Info(currentRoot.right, curr * 2 + 2));
-                }
+            if(curr.root.left!=null){
+                dq.add(new Info(curr.root.left, 2*curr.idx));
             }
-
-            ans = Math.max(ans, last - first + 1);
+            if(curr.root.right!=null){
+                dq.add(new Info(curr.root.right, 2*curr.idx+1));
+            }
         }
-
-        return ans;
     }
-
+    
+    return new Info(root, width);
+ }
+     
     public static void main(String[] args) {
 
-           Node root = new Node(1);
+        Node root = new Node(1);
         root.left = new Node(2);
         root.right = new Node(3);
         root.left.left = new Node(4);
-        root.left.right = new Node(5);
-        root.right.right = new Node(6);
-
-        System.out.println(widthOfBinaryTree(root));
-    
+       root.right.right = new Node(5);    
+         System.out.println(maxWidth(root).idx);
     }
 }

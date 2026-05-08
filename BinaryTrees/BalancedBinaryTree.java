@@ -1,6 +1,6 @@
 package BinaryTrees;
 
-public class BalancedBinaryTree {
+public class balancedBinaryTree {
        static class Node{
         int data;
         Node left;
