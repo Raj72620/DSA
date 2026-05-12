@@ -1,6 +1,7 @@
 package Greedy;
 import java.util.*;
 
+//using custom class 
     class JobSequencing {
 
     int deadline;
