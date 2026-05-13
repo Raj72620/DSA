@@ -26,6 +26,7 @@ public class medianFromDataStream {
             if (maxHeap.size() == minHeap.size()) {
                 return (maxHeap.peek() + minHeap.peek()) / 2.0;
             }
+            
             return maxHeap.peek();
         }
     }
@@ -36,7 +37,7 @@ public class medianFromDataStream {
         MedianFinder mf = new MedianFinder();
         for (int ele : streams) {
             mf.insert(ele);
+            System.out.println(mf.getMedian());
         }
-        System.out.println(mf.getMedian());
     }
 }
