@@ -19,16 +19,26 @@ public class graphPractice {
     public static void insert(int v, ArrayList<Pairs>[] graph) {
 
         graph[0].add(new Pairs(0, 1, 1));
-        graph[0].add(new Pairs(0, 3, 2));
+        graph[0].add(new Pairs(0, 2, 2));
 
-        graph[1].add(new Pairs(1, 4, 3));
+        graph[1].add(new Pairs(1, 0, 3));
+        graph[1].add(new Pairs(1, 3, 3));
 
-        graph[3].add(new Pairs(3, 4, 4));
+         graph[2].add(new Pairs(2, 0, 3));
+          graph[2].add(new Pairs(2, 3, 3));
+           graph[2].add(new Pairs(2, 4, 3));
+
+        graph[3].add(new Pairs(3, 1, 4));
+        graph[3].add(new Pairs(3, 2, 4));
+         graph[3].add(new Pairs(3, 4, 4));
+
+         graph[4].add(new Pairs(4, 2, 4));
+        graph[4].add(new Pairs(4, 3, 4));
     }
 
     public static void main(String[] args) {
 
-        int v = 6;
+        int v = 5;
         ArrayList<Pairs>[] graph = new ArrayList[v];
         for (int i = 0; i < v; i++) {
             graph[i] = new ArrayList<>();
