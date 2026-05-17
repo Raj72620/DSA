@@ -1,6 +1,8 @@
 package Graphs;
 import java.util.*;
 
+//Cycle detection in Undirected graph using DFS and BFS
+
 public class cycleDetection {
 
     static class Edges {
@@ -94,7 +96,7 @@ public class cycleDetection {
                 Edges ed = graph[curr.node].get(i);
 
                 int neigh = ed.dest;
-                
+
                 // Case 1: neighbour not visited
                 if (!vis[neigh]) {
                     vis[neigh] = true;
