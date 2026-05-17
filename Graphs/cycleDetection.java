@@ -21,7 +21,6 @@ public class cycleDetection {
             this.parent = parent;
         }
     }
-
     public static void insert(ArrayList<Edges>[] graph, int v) {
         graph[1].add(new Edges(1, 2));
         graph[1].add(new Edges(1, 3));
@@ -47,7 +46,6 @@ public class cycleDetection {
                 }
             }
         }
-
         return false;
     }
 
@@ -65,7 +63,6 @@ public class cycleDetection {
                 return true;
             }
         }
-
         return false;
     }
 
@@ -80,7 +77,6 @@ public class cycleDetection {
                 }
             }
         }
-
         return false;
     }
 
@@ -98,20 +94,17 @@ public class cycleDetection {
                 Edges ed = graph[curr.node].get(i);
 
                 int neigh = ed.dest;
-
                 // Case 1: neighbour not visited
                 if (!vis[neigh]) {
                     vis[neigh] = true;
                     q.add(new Info(neigh, curr.node));
                 }
-
                 // Case 2: neighbour already visited and not parent
                 else if (neigh != curr.parent) {
                     return true;
                 }
             }
         }
-
         return false;
     }
 
