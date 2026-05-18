@@ -1,4 +1,4 @@
-
+package Graphs;
 import java.util.*;
 
 public class bipartiteGraph {
@@ -84,7 +84,6 @@ public class bipartiteGraph {
         }
         return true;
     }
-
     public static boolean dfs(int node, int col, int[] color, ArrayList<Pairs>[] graph) {
 
         color[node] = col;
