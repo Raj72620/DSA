@@ -9,69 +9,81 @@ import java.util.*;
 
 public class cycleDetectionDG {
 
-     static class Edges{
-        int src ;
+    static class Edges {
+        int src;
         int dest;
 
-        public Edges(int src , int dest) {
-            this.src=src;
-            this.dest=dest;
+        public Edges(int src, int dest) {
+            this.src = src;
+            this.dest = dest;
         }
     }
-        public static void insert(ArrayList<Edges>[] graph,int v){
+
+    public static void insert(ArrayList<Edges>[] graph, int v) {
+
+        // Directed graph edges
         graph[0].add(new Edges(0, 1));
-         graph[0].add(new Edges(0, 2));
+        graph[0].add(new Edges(0, 2));
 
-          graph[1].add(new Edges(1, 0));
-           graph[1].add(new Edges(1, 3));
+        graph[1].add(new Edges(1, 3));
 
-            graph[2].add(new Edges(2, 0));
-             graph[2].add(new Edges(2, 3));
-              graph[2].add(new Edges(2, 4));
+        graph[2].add(new Edges(2, 3));
+        graph[2].add(new Edges(2, 4));
 
-               graph[3].add(new Edges(3, 1));
-                graph[3].add(new Edges(3, 2));
-                 graph[3].add(new Edges(3, 4));
+        graph[3].add(new Edges(3, 4));
 
-                  graph[4].add(new Edges(4, 2));
-                   graph[4].add(new Edges(4, 3));
+        // Example cycle:
+        // 4 -> 2 creates cycle: 2 -> 3 -> 4 -> 2
+        graph[4].add(new Edges(4, 2));
     }
-public static boolean cycleDetectionDG(ArrayList<Edges>[] graph){
-    boolean[] vis = new boolean[graph.length];
-    boolean[] pathVis= new boolean[graph.length];
 
-    for(int i=0;i<graph.length;i++){
-        if(!vis[i]){
-            if(cycleDetectionDGUtil(graph, vis, pathVis,i)){
-                return true;
-            }
-        }
-    }
-    return false;
-}
-    public static boolean cycleDetectionDGUtil(ArrayList<Edges>[] graph,boolean[] vis,boolean[] pathVis,int start){
-            vis[start]=true;
-            pathVis[start]=true;
+    public static boolean cycleDetectionDG(ArrayList<Edges>[] graph) {
+        boolean[] vis = new boolean[graph.length];
+        boolean[] pathVis = new boolean[graph.length];
 
-            for(int i=0;i<graph[start].size();i++){
-                Edges ed = graph[start].get(i);
-                if(!vis[ed.dest]){
-                    if(cycleDetectionDGUtil(graph, vis, pathVis, ed.dest)){
-                        return true;
-                    }
-                }else if(pathVis[ed.dest]){
+        for (int i = 0; i < graph.length; i++) {
+            if (!vis[i]) {
+                if (cycleDetectionDGUtil(graph, vis, pathVis, i)) {
                     return true;
                 }
             }
-            pathVis[start]=false;
-            return false;
+        }
+
+        return false;
     }
+
+    public static boolean cycleDetectionDGUtil(ArrayList<Edges>[] graph,boolean[] vis, boolean[] pathVis, int start) {
+
+        vis[start] = true;
+        pathVis[start] = true;
+
+        for (int i = 0; i < graph[start].size(); i++) {
+            Edges ed = graph[start].get(i);
+
+            if (!vis[ed.dest]) {
+                if (cycleDetectionDGUtil(graph, vis, pathVis, ed.dest)) {
+                    return true;
+                }
+            } else if (pathVis[ed.dest]) {
+                return true;
+            }
+        }
+
+        pathVis[start] = false;
+        return false;
+    }
+
     public static void main(String[] args) {
-          int v=5;
+        int v = 5;
+
         ArrayList<Edges>[] graph = new ArrayList[v];
-       for(int i=0;i<v;i++){
-            graph[i]=new ArrayList<>();
-       }
-       insert(graph, v);
+
+        for (int i = 0; i < v; i++) {
+            graph[i] = new ArrayList<>();
+        }
+
+        insert(graph, v);
+
+        System.out.println(cycleDetectionDG(graph));
     }
 }
