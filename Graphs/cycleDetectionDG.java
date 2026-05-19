@@ -5,6 +5,7 @@ import java.util.*;
 //Cycle detection in Directed graph using DFS and BFS
 
 // DFS -> approach using two boolean visited (vis , path vis)
+
 //BFS -> Using topological sort 
 
 public class cycleDetectionDG {
@@ -37,6 +38,7 @@ public class cycleDetectionDG {
         graph[4].add(new Edges(4, 2));
     }
 
+    // DFS -> approach using two boolean visited (vis , path vis)
     public static boolean cycleDetectionDG(ArrayList<Edges>[] graph) {
         boolean[] vis = new boolean[graph.length];
         boolean[] pathVis = new boolean[graph.length];
@@ -48,10 +50,8 @@ public class cycleDetectionDG {
                 }
             }
         }
-
         return false;
     }
-
     public static boolean cycleDetectionDGUtil(ArrayList<Edges>[] graph,boolean[] vis, boolean[] pathVis, int start) {
 
         vis[start] = true;
@@ -68,10 +68,14 @@ public class cycleDetectionDG {
                 return true;
             }
         }
-
         pathVis[start] = false;
         return false;
     }
+
+
+    //BFS -> Using topological sort
+
+    
 
     public static void main(String[] args) {
         int v = 5;
