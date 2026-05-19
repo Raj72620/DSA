@@ -3,25 +3,24 @@ import java.util.*;
 
 public  class practice{
     
+    public static boolean preRequisites(int[][] arr , int numCourses){
+        ArrayList<Integer>[] graph = new ArrayList[numCourses];
 
- 
+        for(int i=0;i<graph.length;i++){
+            graph[i]= new ArrayList<>();
+        }
+        int[] inDegree = new int[numCourses];
+        
+        for(int[] ele : arr){
+            int courses = ele[0];
+            int prereq = ele[1];
+
+            graph[prereq].add(courses);
+            inDegree[courses]++;
+        }
+    }
     public static void main(String[] args) {
-       int[] arr={1, 10, 12, 9, 2, 3};
-       int k=4;
-        PriorityQueue<Integer> pq = new PriorityQueue<>();
-
-        for(int i=0;i<k;i++){
-            if(arr[i]<k){
-            pq.add(arr[i]);
-            }
-        }
-        int count =0;
-        while(!pq.isEmpty()){
-                int add=pq.remove();
-            int rem = pq.remove();
-            add+=rem;
-            count++;
-        }
-        System.out.println(count);
+        int[][] arr={{1,0},{2,0},{3,1},{3,2}};
+        int numCourses=4;
     }
 }

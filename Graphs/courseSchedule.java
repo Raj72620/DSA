@@ -1,6 +1,8 @@
 package Graphs;
 import java.util.*;
 
+//course schedule 1 ,2 ->
+
 //BFS-Khans algo if my count == V then all course can be done else false;
 
 public class courseSchedule {
@@ -22,7 +24,7 @@ public class courseSchedule {
             inDegree[course]++;
         }
         Queue<Integer> q = new LinkedList<>();
-
+        ArrayList<Integer> ans = new ArrayList<>();
         for (int i = 0; i < numCourses; i++) {
             if (inDegree[i] == 0) {
                 q.add(i);
@@ -32,6 +34,7 @@ public class courseSchedule {
         while (!q.isEmpty()) {
 
             int curr = q.remove();
+            ans.add(curr);
             count++;
 
             for (int i = 0; i < graph[curr].size(); i++) {
@@ -43,12 +46,14 @@ public class courseSchedule {
                 }
             }
         }
+        System.out.println(ans);
         return count == numCourses;
+
     }
     
     public static void main(String[] args) {
         int[][] preRequisites ={{1,0},{2,0},{3,1},{3,2}};
         int numCourses=4;
-        canFinish(numCourses, preRequisites);
+        System.out.println(canFinish(numCourses, preRequisites));
     }
 }
