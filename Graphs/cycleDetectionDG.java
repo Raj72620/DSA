@@ -75,10 +75,9 @@ public class cycleDetectionDG {
 
     //BFS -> Using topological sort
 
-     public static void topoSortBfs(ArrayList<Edges>[] graph) {
+     public static boolean topoSortBfs(ArrayList<Edges>[] graph) {
     int[] inDegree = new int[graph.length];
 
-    // Step 1: Calculate indegree
     for (int i = 0; i < graph.length; i++) {
         for (int j = 0; j < graph[i].size(); j++) {
             Edges p = graph[i].get(j);
@@ -91,10 +90,11 @@ public class cycleDetectionDG {
             q.add(i);
         }
     }
-    // Step 3: BFS
+    int count =0;
     while (!q.isEmpty()) {
         int curr = q.remove();
         System.out.print(curr + " ");
+             count++;
 
         for (int i = 0; i < graph[curr].size(); i++) {
             Edges p = graph[curr].get(i);
@@ -104,6 +104,7 @@ public class cycleDetectionDG {
             }
         }
     }
+    return count==inDegree.length;
 }
 
     public static void main(String[] args) {
