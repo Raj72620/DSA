@@ -4,14 +4,14 @@ import java.util.*;
 
 public class alienDictionary {
 
-    public static String findOrder(String[] disct,int N , int k){
+    public static String findOrder(String[] words,int N , int k){
         ArrayList<ArrayList<Integer>> graph = new ArrayList<>();
         for(int i=0;i<k;i++){
             graph.add(new ArrayList<>());
         }
         for(int i=0;i<N-1;i++){
-            String s1 = disct[i];
-            String s2 = disct[i+1];
+            String s1 = words[i];
+            String s2 = words[i+1];
             int len = Math.min(s1.length(), s2.length());
 
             for(int j=0;j<len;j++){
@@ -49,10 +49,10 @@ public class alienDictionary {
         return ans.toString();
     }
     public static void main(String[] args) {
-        String[] disct = {"baa","abcd","abca","cab","cad"};
+        String[] words = {"baa","abcd","abca","cab","cad"};
         int k=4;
-        int N=disct.length;
-        String ans = findOrder(disct, N, k);
+        int N=words.length;
+        String ans = findOrder(words, N, k);
         System.out.println(ans);
     }
 }

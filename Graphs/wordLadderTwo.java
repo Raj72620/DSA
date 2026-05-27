@@ -1,8 +1,9 @@
+package Graphs;
+
 import java.util.*;
 
-public class practice{
-
-    public static ArrayList<ArrayList<String>> c(String[] words , String start , String end){
+public class wordLadderTwo {
+    public static ArrayList<ArrayList<String>> wdLadder(String[] words , String start , String end){
         ArrayList<ArrayList<String>> ans = new ArrayList<>();
         HashSet<String> set = new HashSet<>();
         for(String wd : words){
@@ -54,7 +55,7 @@ public class practice{
         String start = "hit";
         String end = "cog";
 
-        ArrayList<ArrayList<String>> ans = c(words, start, end);
+        ArrayList<ArrayList<String>> ans = wdLadder(words, start, end);
         System.out.println(ans);
     }
 }

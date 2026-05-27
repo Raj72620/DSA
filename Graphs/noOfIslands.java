@@ -2,7 +2,7 @@ package Graphs;
 
 public class noOfIslands {
 
-    // using DFS also we can solve using BFS
+    // using DFS , and also we can solve using BFS
     public static void dfs(int[][] mat , int i, int j){
         int n=mat.length;
         int m =mat[0].length;
