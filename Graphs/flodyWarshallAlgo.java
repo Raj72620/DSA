@@ -28,6 +28,7 @@ public class flodyWarshallAlgo {
                 }
             }
         }
+        //check for negative cycle 
         for(int i=0;i<n;i++){
             if(mat[i][i]<0){
                 System.out.print("negative cycle exists");
