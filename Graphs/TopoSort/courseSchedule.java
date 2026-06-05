@@ -1,4 +1,4 @@
-package Graphs;
+package Graphs.TopoSort;
 import java.util.*;
 
 //course schedule 1 ,2 ->
