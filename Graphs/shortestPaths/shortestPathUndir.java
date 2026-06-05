@@ -1,4 +1,4 @@
-package Graphs;
+package Graphs.shortestPaths;
 //shortest path in undirected graph -> BFS
 
 import java.util.*;

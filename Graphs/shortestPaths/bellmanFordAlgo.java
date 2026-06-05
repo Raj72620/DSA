@@ -1,4 +1,4 @@
-package Graphs;
+package Graphs.shortestPaths;
 import java.util.*;
 
 public class bellmanFordAlgo {
