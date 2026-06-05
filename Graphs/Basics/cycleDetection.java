@@ -1,4 +1,4 @@
-package Graphs;
+package Graphs.Basics;
 import java.util.*;
 
 //Cycle detection in Undirected graph using DFS and BFS
@@ -81,6 +81,8 @@ public class cycleDetection {
         }
         return false;
     }
+
+    
 
     // Detect cycle using BFS
     public static boolean detectCycleUtilBFS(ArrayList<Edges>[] graph, boolean[] vis, int start) {
