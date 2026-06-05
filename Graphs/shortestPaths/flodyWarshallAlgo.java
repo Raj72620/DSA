@@ -45,10 +45,11 @@ public class flodyWarshallAlgo {
         }
     }
     public static void main(String[] args) {
-        int[][] mat = {
-    {0, 1, -1},
-    {-1, 0, -2},
-    {-4, -1, 0}
+       int[][] mat = {
+    {0, 2, -1, -1},
+    {1, 0, 3, -1},
+    {-1, -1, 0, -1},
+    {3, 5, 4, 0}
 };
         floydwarshall(mat);
 

@@ -8,7 +8,7 @@ public class bellmanFordAlgo {
         Arrays.fill(dist, Integer.MAX_VALUE);
         dist[src]=0;
 
-        for(int i=1;i<=v-1;i++){
+        for(int i=0;i<v-1;i++){
             for(int[] edge : edges){
                 int u=edge[0];
                 int vt = edge[1];
