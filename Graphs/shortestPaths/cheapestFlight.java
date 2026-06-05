@@ -70,12 +70,13 @@ public static int cheapestCost(int v, ArrayList<ArrayList<Pair>> graph,
         for (int i = 0; i < v; i++) {
             graph.add(new ArrayList<>());
         }
-        for (int i = 0; i < arr.length; i++) {
-            int src = arr[i][0];
-            int dest = arr[i][1];
-            int wt = arr[i][2];
+        for (int[] arr1 : arr) {
+            int src = arr1[0];
+            int dest = arr1[1];
+            int wt = arr1[2];
             graph.get(src).add(new Pair(dest, wt));
         }
+        
         int ans = cheapestCost(v, graph, 0, 3, 1);
 System.out.println(ans);
     }
