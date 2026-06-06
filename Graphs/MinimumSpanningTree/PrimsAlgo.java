@@ -36,7 +36,7 @@ static class Info{
             int node = info.node;
             int wt=info.wt;
             int par=info.parent;
-
+            
             if(visited[node]) continue;
 
             visited[node]=true;
@@ -49,7 +49,7 @@ static class Info{
             }
         }
         return sum;
-    }
+    } 
     public static void main(String[] args) {
          int v= 5;
       int[][] arr = {{0, 1, 1},{0, 2, 1}, {1, 0, 2},{1, 2, 1},{2, 0, 1},{2, 1, 1},{2, 3, 2},{2, 4, 2},{3, 2, 2},{3, 4, 1},{4, 2, 2},{4, 3, 1}
