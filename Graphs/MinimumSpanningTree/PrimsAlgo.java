@@ -1,4 +1,4 @@
-package edgess.MinimumSpanningTree;
+package Graphs;
 import java.util.*;
 
 public class PrimsAlgo {
