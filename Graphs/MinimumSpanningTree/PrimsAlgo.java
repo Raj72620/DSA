@@ -1,4 +1,4 @@
-package Graphs.MinimumSpanningTree;
+package edgess.MinimumSpanningTree;
 import java.util.*;
 
 public class PrimsAlgo {
@@ -25,7 +25,7 @@ static class Info{
         }
     
     }
-    public static int getMin(int v ,ArrayList<ArrayList<pairs>> graph){
+    public static int getMin(int v ,ArrayList<ArrayList<pairs>> edges){
         PriorityQueue<Info>pq = new PriorityQueue<>((a,b)->a.wt-b.wt);
         boolean[] visited = new boolean[v];
         pq.add(new Info(0, 0, -1));
@@ -42,7 +42,7 @@ static class Info{
             visited[node]=true;
             sum+=wt;
 
-            for(pairs neig : graph.get(node)){
+            for(pairs neig : edges.get(node)){
                 if(!visited[neig.dest]){
                     pq.add(new Info(neig.dest, neig.weight, node));
                 }
@@ -54,17 +54,17 @@ static class Info{
          int v= 5;
       int[][] arr = {{0, 1, 1},{0, 2, 1}, {1, 0, 2},{1, 2, 1},{2, 0, 1},{2, 1, 1},{2, 3, 2},{2, 4, 2},{3, 2, 2},{3, 4, 1},{4, 2, 2},{4, 3, 1}
 };
-        ArrayList<ArrayList<pairs>> graph = new ArrayList<>();
+        ArrayList<ArrayList<pairs>> edges = new ArrayList<>();
         for(int i=0;i<v;i++){
-            graph.add(new ArrayList<>());
+            edges.add(new ArrayList<>());
         }
         for(int[] edge : arr){
             int u=edge[0];
             int vx=edge[1];
             int wt=edge[2];
 
-            graph.get(u).add(new pairs(vx, wt));
+            edges.get(u).add(new pairs(vx, wt));
         }
-        System.out.println(getMin(v, graph));
+        System.out.println(getMin(v, edges));
     }
 }

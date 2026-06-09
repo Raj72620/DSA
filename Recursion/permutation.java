@@ -3,6 +3,9 @@ package Recursion;
 import java.util.*;
 
 public class permutation {
+
+    // permuation of an array
+    // i need to perform all combinations -> for each index i have to take all other combinations hence usng for loop will help me to find it out.
     public static void allPerm(int[] arr , int idx , ArrayList<Integer> list){
         if(idx==arr.length){
             System.out.print(list+ " ");
@@ -23,6 +26,7 @@ public class permutation {
     }
 
     // permuation of a string
+
   public static void stringPerm(String str, int idx) {
 
     if (idx == str.length()) {
