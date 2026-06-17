@@ -1,4 +1,4 @@
-package Array;
+package Arrays;
 //Sub array sum divisible by k (Prefix sum + map approach)
 
 import java.util.HashMap;

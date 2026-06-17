@@ -1,4 +1,4 @@
-package Array;
+package Arrays;
 import java.util.HashMap;
 
 //sub array with k different integer

@@ -1,4 +1,4 @@
-package Array;
+package Arrays;
 import java.util.HashMap;
 
 //Longest substring without repeating characters

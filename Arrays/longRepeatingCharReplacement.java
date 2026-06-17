@@ -1,4 +1,4 @@
-package Array;
+package Arrays;
 //longest repeating character replacement
 
 import java.util.HashMap;

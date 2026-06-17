@@ -60,7 +60,7 @@ public class frogJump {
             int right = Integer.MAX_VALUE;
 
             if(i>1){
-            right = prev2+ Math.abs(arr[i]-arr[i-1]);
+            right = prev2+ Math.abs(arr[i]-arr[i-2]);
             }
             int curr = Math.min(left, right);
             prev2=prev1;
@@ -76,6 +76,8 @@ public class frogJump {
 
         System.out.println(minAbsDiff(arr, n-1,dp));
 
-        System.out.print(minAbs(arr, n));
+        System.out.println(minAbs(arr, n));
+
+        System.out.print(spaceOptimize(arr, n));
     }
 }

@@ -1,4 +1,4 @@
-package Array;
+package Arrays;
 
 public class maxCardPoints{
     public static int maxCardPoints(int[] arr , int k){

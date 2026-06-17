@@ -3,17 +3,17 @@ import java.util.*;
 
 public class dijkstraAlgo {
 
-   static class pairs{
+   static class Pair{
         int dest;
         int weigth;
 
-        public pairs(int dest , int weight) {
+        public Pair(int dest , int weight) {
             this.dest=dest;
             this.weigth=weight;
         }  
     }
     public static int[] dijkstra(int[][] arr,int v, int e){
-        ArrayList<ArrayList<pairs>> graph = new ArrayList<>();
+        ArrayList<ArrayList<Pair>> graph = new ArrayList<>();
         for(int i=0;i<v;i++){
             graph.add(new ArrayList<>());
         }
@@ -23,29 +23,29 @@ public class dijkstraAlgo {
         int d = arr[i][1];
         int w =arr[i][2];
 
-        graph.get(src).add(new pairs(d, w));
+        graph.get(src).add(new Pair(d, w));
        }
-       PriorityQueue<pairs> pq = new PriorityQueue<>(((a, b) -> a.weigth - b.weigth));
+       PriorityQueue<Pair> pq = new PriorityQueue<>(((a, b) -> a.weigth - b.weigth));
        int[] dist = new int[v];
         Arrays.fill(dist, Integer.MAX_VALUE);
 
        dist[0]=0;
 
-       pq.add(new pairs(0, 0));
+       pq.add(new Pair(0, 0));
 
        while(!pq.isEmpty()){
 
-        pairs curr = pq.remove();
+        Pair curr = pq.remove();
         int node =curr.dest;
         int wt = curr.weigth;
 
          if(dist[node]!=Integer.MAX_VALUE){
-        for(pairs neig : graph.get(node)){
+        for(Pair neig : graph.get(node)){
             int toalDist = wt+neig.weigth;
 
             if(dist[neig.dest] > toalDist){
                 dist[neig.dest]=toalDist;
-                pq.add(new pairs(neig.dest, toalDist));
+                pq.add(new Pair(neig.dest, toalDist));
             }
         }
        }

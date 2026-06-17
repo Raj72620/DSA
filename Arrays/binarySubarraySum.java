@@ -1,4 +1,4 @@
-package Array;
+package Arrays;
 
 public class binarySubarraySum {
     public static int findsubArray(int[] arr , int goal){

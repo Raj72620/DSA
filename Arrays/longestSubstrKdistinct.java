@@ -1,4 +1,4 @@
-package Array;
+package Arrays;
 //longest sub string with at most k distinct characters
 
 import java.util.HashMap;

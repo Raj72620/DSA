@@ -1,4 +1,4 @@
-package Array;
+package Arrays;
 
 //Max consecutive ones - 2 and 3
 

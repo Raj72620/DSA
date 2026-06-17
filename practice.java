@@ -1,22 +1,16 @@
-import java.util.ArrayList;
+
 public class practice{
 
-    public static void subSet(int[] arr , int idx,ArrayList<Integer> ans){
-        System.out.print(ans);
 
-        for(int i=idx;i<arr.length;i++){
-            if(i>idx && arr[i]==arr[i-1]) continue;
-            ans.add(arr[i]);
-            subSet(arr, i+1, ans);
-            ans.remove(ans.size()-1);
-        }
-    }
-  
     public static void main(String[] args) {
-    int[] arr ={1,2,2};
-    int idx =0;
-        ArrayList<Integer>ans = new ArrayList<>();
-
-    subSet(arr,idx,ans);
+        int[] arr={-2,-3,4,-1,-2,1,5,-3};
+        int maxi=0;
+        int ps=0;
+        for(int i=0;i<arr.length;i++){
+            ps=ps+arr[i];
+            if(ps<0) ps=0;
+            maxi=Math.max(maxi, ps);
+        }
+        System.out.println(maxi);
     }
 }

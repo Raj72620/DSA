@@ -1,7 +1,8 @@
-package Graphs;
+package Graphs.MinimumSpanningTree;
+
 import java.util.*;
 
-public class PrimsAlgo {
+public class PrimsAlgorithm {
 
     static class pairs{
    

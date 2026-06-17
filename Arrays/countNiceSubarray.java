@@ -1,4 +1,4 @@
-package Array;
+package Arrays;
 
 public class countNiceSubarray {
     public static int niceSubarray(int[] arr , int k){
