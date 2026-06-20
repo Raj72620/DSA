@@ -1,6 +1,6 @@
 package LinkedList.singleLL;
 
-public class deleteFromEnd {
+public class detectCycle {
 
     static class Node {
 
@@ -30,38 +30,22 @@ public class deleteFromEnd {
             }
         }
 
-        void delete(int idx) {
+        boolean isCycleExits() {
             if (head == null) {
-                System.out.println("list is empty");
-                return;
+                return false;
             }
-            if (idx <= 0) {
-                System.out.println("Invalid idx");
-                return;
-            }
-            int count = 1;
-            Node curr = head;
-            while (curr.next != null) {
-                curr = curr.next;
-                count++;
-            }
-            if (idx > count) {
-                System.out.println("Invalid idx");
-                return;
-            }
-            int target = count - idx;
-            if (target == 0) {
-                head = head.next;
-                return;
-            }
-            int i = 1;
 
-            curr = head;
-            while (i < target) {
-                curr = curr.next;
-                i++;
+            Node slow = head;
+            Node fast = head;
+            while (fast != null && fast.next != null) {
+                slow = slow.next;
+                fast = fast.next.next;
+                if (slow == fast) {
+                    System.out.print("cycle exits");
+                    return true;
+                }
             }
-            curr.next = curr.next.next;
+            return false;
         }
 
         void printLL() {
@@ -75,18 +59,23 @@ public class deleteFromEnd {
             }
             System.out.print("null");
         }
+
     }
 
     public static void main(String[] args) {
         LL list = new LL();
-        list.add(10);
-        list.add(20);
-        list.add(30);
-        list.add(40);
+        list.add(3);
+        list.add(1);
+        list.add(2);
+        list.add(1);
+        list.add(3);
+        Node lastNode = list.head;
+        while (lastNode.next != null) {
+            lastNode = lastNode.next;
+        }
+        lastNode.next = list.head.next;
 
-        list.delete(5);
-
-        list.printLL();
+        System.out.println(list.isCycleExits());
     }
 
 }
