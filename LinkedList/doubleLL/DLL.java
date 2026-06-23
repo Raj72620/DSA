@@ -1,4 +1,4 @@
-package LinkedList;
+package LinkedList.doubleLL;
 
 public class DLL {
 
