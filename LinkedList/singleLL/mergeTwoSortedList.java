@@ -61,7 +61,7 @@ public class mergeTwoSortedList{
                 curr.next=head1;
             }else{
                 curr.next=head2;
-            }c
+            }
         return dummy.next;
       }
         void printLL() {
