@@ -7,7 +7,7 @@ public class TilingProb {
         return totalWays(n-1) + totalWays(n-2);
     }
     public static void main(String[] args) {
-        int n=3;
+        int n=4;
         System.out.println(totalWays(n));
 
     }

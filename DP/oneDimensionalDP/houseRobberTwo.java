@@ -6,6 +6,7 @@ public class houseRobberTwo {
 
         return Math.max(solve(arr,0,n-1), solve(arr,1,n));
     }
+    
     public static int solve(int[] arr,int start , int end){
         int prev2=0;
         int prev1=arr[start];
