@@ -1,4 +1,4 @@
-package BinaryTrees;
+package BinaryTrees.basics;
 
 public class balancedBinaryTree {
        static class Node{

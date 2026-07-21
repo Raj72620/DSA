@@ -1,4 +1,4 @@
-package BinaryTrees;
+package BinaryTrees.basics;
 
 public class checkSubtreeOfTree {
 

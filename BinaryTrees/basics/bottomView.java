@@ -1,4 +1,4 @@
-package BinaryTrees;
+package BinaryTrees.basics;
 import java.util.*;
 
 public class bottomView {
