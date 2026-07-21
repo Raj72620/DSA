@@ -1,4 +1,4 @@
-package BinaryTrees;
+package BinaryTrees.medium;
 
 public class arbitaryChildSum {
         static class Node {

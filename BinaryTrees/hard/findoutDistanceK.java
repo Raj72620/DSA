@@ -1,4 +1,4 @@
-package BinaryTrees;
+package BinaryTrees.hard;
 
 import java.util.*;
 

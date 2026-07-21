@@ -1,4 +1,4 @@
-package BinaryTrees;
+package BinaryTrees.medium;
 import java.util.*;
 
 public class topView {

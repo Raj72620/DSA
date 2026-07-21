@@ -1,4 +1,4 @@
-package BinaryTrees;
+package BinaryTrees.hard;
 
 public class flattenBinaryTree {
         static class Node {

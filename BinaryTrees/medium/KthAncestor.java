@@ -1,4 +1,4 @@
-package BinaryTrees;
+package BinaryTrees.medium;
 
 public class KthAncestor {
 
