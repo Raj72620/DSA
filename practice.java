@@ -1,22 +1,38 @@
-
+import java.util.*;
 public class practice{
 
- 
-public static int solve(int[][] arr,int n,int m,int i,int j){
-   if(i==0 && j==0){
-      return arr[i][j];
-   }
-   if(i<0 || j<0) return Integer.MAX_VALUE;
+  public static int[] solve(int[] arr,int n){
+    Stack<Integer> st= new Stack<>();
+    int[] ans=new int[n];
 
-   int left=solve(arr, n, m, i, j-1);
-   int up = solve(arr, n, m, i-1, j);
+    int ele=arr[n-1];
+    st.push(ele);
+    ans[n-1]=-1;
 
-   return arr[i][j]+Math.min(left, up);
-}
-    public static void main(String[] args) {
-      int[][] arr={{5,9,6},{11,5,2}};
-      int n=arr.length;
-      int m=arr[0].length;
-      System.out.println(solve(arr, n,m,n-1, m-1));
+    for(int i=n-2;i>=0;i--){
+      ele=arr[i];
+
+      while(!st.isEmpty() && ele > st.peek()){
+        st.pop();
+      }
+      if(st.isEmpty()){
+        ans[i]=-1;
+      }else{
+        ans[i]=st.peek();
+      }
+      st.push(arr[i]);
     }
-}
+    return ans;
+  }
+
+
+  public static void main(String[] args) {
+      int[] arr={6,8,0,1,3};
+      int n=arr.length;
+
+    int[] ans=  solve(arr,n);
+    for(int i=0;i<n;i++){
+      System.out.print(ans[i]+ " ");
+    }
+  }
+} 

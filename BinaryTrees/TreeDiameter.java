@@ -97,6 +97,7 @@ public class TreeDiameter {
             return Math.max(leftDia, rightDia) + 1;
         }
     }
+ 
 
     public static void main(String[] args) {
         Node root = new Node(1);
@@ -106,14 +107,13 @@ public class TreeDiameter {
         root.left.right = new Node(5);
         root.left.left.left = new Node(6);
         root.left.right.right = new Node(7);
-        root.left.left.left.left = new Node(8);
-        root.left.right.right.right = new Node(9);
+        root.left.right.right.right = new Node(8);
 
         // System.out.println(OptimizedDiameter(root).dia);
         //  System.out.println(OptimizedDiameter(root).hg);
-        // BT.optimizedDia(root);
-        // System.out.println(BT.maxi);  // print the diameter
-        System.out.println(TreeOptimizedDiameter(root));
+        BT.optimizedDia(root);
+        System.out.println(BT.maxi);  // print the diameter
+       // System.out.println(TreeOptimizedDiameter(root));
 
     }
 }
