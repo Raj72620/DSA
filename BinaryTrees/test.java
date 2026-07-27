@@ -116,17 +116,51 @@ public class test {
        }
     }
 
-    
+    public static Node insert(Node root,int value){
+        if(root==null){
+            root=new Node(value);
+            return root;
+        }
+        if(root.data > value){
+            root.left=insert(root.left,value);
+        }else{
+            root.right=insert(root.right, value);
+        }
+        return root;
+    }
+  
+    public static int fun(Node root,int val){
+        if(root==null){
+            return 1;
+        }
+        if(root.data!=val){
+            return -Integer.MIN_VALUE;
+        }
+        int left=fun(root.left, root.data+1);
+   
+        int right=fun(root.right, root.data+1);
+
+        if(left<0 && right<0) return -Integer.MIN_VALUE;
+
+        if(left<0){
+            return right;
+        }
+        if(right<0) return left;
+
+        return Math.max(left, right);
+    }
 
     public static void main(String[] args) {
 
-        Node root = new Node(1);
-        root.left = new Node(2);
-        root.right = new Node(3);
+         Node root = new Node(10);
+         root.left = new Node(11);
+         root.right = new Node(12);
 
-        root.left.left = new Node(4);
-        root.left.right = new Node(5);
+        //  root.left.left = new Node(4);
+        //  root.left.right = new Node(7);
 
-      inorder(root);
+
+         System.out.println(fun(root, 1));
+     
     }
 }
