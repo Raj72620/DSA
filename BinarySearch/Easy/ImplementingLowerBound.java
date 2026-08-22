@@ -1,3 +1,4 @@
+package BinarySearch.Easy;
 
 public class ImplementingLowerBound {
 

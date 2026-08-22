@@ -1,3 +1,4 @@
+package BinarySearch.Easy;
 public class searchInaSortedArr {
     //you are given a sorted arr find the idx of the target in that arr
     //Not in the arr return -1
