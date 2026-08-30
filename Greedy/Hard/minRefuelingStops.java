@@ -1,8 +1,10 @@
+package Greedy.Hard;
+
 import java.util.PriorityQueue;
 
-public class practice {
+public class minRefuelingStops {
 
-    public static int minNoOfRefuelingStops(int[][] nums, int n) {
+        public static int minNoOfRefuelingStops(int[][] nums, int n) {
 
         PriorityQueue<Integer> pq =
             new PriorityQueue<>((a, b) -> b - a);
@@ -33,10 +35,8 @@ public class practice {
 
         return stops;
     }
-
     public static void main(String[] args) {
-
-        int[][] nums = {
+         int[][] nums = {
             {10, 60},
             {20, 30},
             {30, 30},
