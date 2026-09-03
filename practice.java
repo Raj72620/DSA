@@ -1,50 +1,36 @@
-import java.util.PriorityQueue;
 
 public class practice {
 
-    public static int minNoOfRefuelingStops(int[][] nums, int n) {
+    public static int solve(int[] arr,int idx,int tar){
+         if (tar == 0)
+        return 1;
 
-        PriorityQueue<Integer> pq =
-            new PriorityQueue<>((a, b) -> b - a);
-
-        int stops = 0;
-        int fuel = 10;
-
-        for (int i = 0; i < n; i++) {
-
-            int pos = nums[i][0];
-
-            if (pos <= fuel) {
-                pq.add(nums[i][1]);
-
-            } else {
-
-                while (!pq.isEmpty() && pos > fuel) {
-                    fuel += pq.remove();
-                    stops++;
-                }
-                if (pos > fuel) {
-                    return -1;
-                }
-
-                pq.add(nums[i][1]);
-            }
+    if (idx == 0){
+        if(arr[0]==tar){
+            return 1;
+        }else{
+            return 0;
         }
-
-        return stops;
     }
+
+    int skip = solve(arr,idx - 1, tar);
+
+    int take = 0;
+
+    if (arr[idx] <= tar)
+        take = solve(arr,idx - 1, tar - arr[idx]);
+
+    return skip + take;
+}
 
     public static void main(String[] args) {
 
-        int[][] nums = {
-            {10, 60},
-            {20, 30},
-            {30, 30},
-            {60, 40}
-        };
+       int[] arr={1,2,2,3};
+       int tar=3;
+       int n=arr.length;
 
-        int n = nums.length;
+      System.out.println( solve(arr,n-1,tar));
 
-        System.out.println(minNoOfRefuelingStops(nums, n));
+       
     }
 }
