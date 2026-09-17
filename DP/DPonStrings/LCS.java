@@ -49,8 +49,8 @@ public class LCS {
         return dp[n][m];
     }
     public static void main(String[] args) {
-        String s1= "ABCBDAB";
-        String s2="BDCABA";
+        String s1= "race";
+        String s2="ecar";
         int n= s1.length();
         int m= s2.length();
 
